@@ -24,14 +24,14 @@ export const projects: Project[] = [
       "Google Maps Platform",
       "Render",
     ],
-    status: "In Progress",
+    status: "Completed",
     year: "2026",
     featured: true,
-    coverImage: "/images/projects/ecotrace-cover.jpg",
+    coverImage: "/images/projects/ecotrace-cover.png",
     screenshots: [],
     links: {
       github: "https://github.com/EcoTraces/Ecotrace-SRS-Document",
-      demo: undefined,
+      demo: "https://wastemanagementsystem-902eb.web.app/",
     },
     caseStudy: {
       overview:
