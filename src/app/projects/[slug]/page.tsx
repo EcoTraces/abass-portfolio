@@ -124,12 +124,12 @@ export default async function ProjectCaseStudyPage({
             <div className="grid gap-4 sm:grid-cols-2">
               {project.screenshots.map((screenshot, index) => (
                 <div key={screenshot} className="overflow-hidden rounded-sm border border-line-strong bg-bg-raised">
-                  <div className="relative aspect-[16/9]">
+                  <div className="bg-grid relative aspect-[16/9]">
                     <Image
                       src={screenshot}
                       alt={`${project.name} screenshot ${index + 1}`}
                       fill
-                      className="object-cover"
+                      className="object-contain p-4"
                     />
                   </div>
                 </div>

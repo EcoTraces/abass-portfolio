@@ -29,7 +29,13 @@ export const projects: Project[] = [
     year: "2026",
     featured: true,
     coverImage: "/images/projects/ecotrace-cover.png",
-    screenshots: [],
+    screenshots: [
+      "/images/projects/ecotrace-01.jpg",
+      "/images/projects/ecotrace-02.jpg",
+      "/images/projects/ecotrace-03.jpg",
+      "/images/projects/ecotrace-04.jpg",
+      "/images/projects/ecotrace-05.jpg",
+    ],
     links: {
       github: "https://github.com/EcoTraces/Ecotrace-SRS-Document",
       demo: "https://wastemanagementsystem-902eb.web.app/",
