@@ -6,6 +6,7 @@ import { isPlaceholder } from "@/lib/utils";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { siteUrl } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
@@ -126,6 +127,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <BackToTop />
         </MotionProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
