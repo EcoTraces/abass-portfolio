@@ -1,10 +1,14 @@
 import { Project } from "@/types";
+import { isPlaceholder } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { StatusTag, TechBadge } from "../ui/TechBadge";
 
 export function ProjectCard({ project }: { project: Project }) {
+  const hasCover = project.coverImage && !isPlaceholder(project.coverImage);
+
   return (
     <motion.div
       layout
@@ -17,14 +21,24 @@ export function ProjectCard({ project }: { project: Project }) {
     >
       <Link href={`/projects/${project.slug}`} className="relative block aspect-16/10 overflow-hidden border-b border-line">
         <div className="bg-grid absolute inset-0 flex items-center justify-center opacity-60">
-          <span className="font-display text-3xl font-medium text-fg-faint">
-            {project.name
-              .split(" ")
-              .map((w) => w[0])
-              .join("")
-              .slice(0, 3)}
-          </span>
+          {!hasCover && (
+            <span className="font-display text-3xl font-medium text-fg-faint">
+              {project.name
+                .split(" ")
+                .map((w) => w[0])
+                .join("")
+                .slice(0, 3)}
+            </span>
+          )}
         </div>
+        {hasCover && (
+          <Image
+            src={project.coverImage}
+            alt={`${project.name} icon`}
+            fill
+            className="object-contain p-8"
+          />
+        )}
       </Link>
 
       <div className="flex flex-1 flex-col p-6">

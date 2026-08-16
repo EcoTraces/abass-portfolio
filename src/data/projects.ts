@@ -84,7 +84,7 @@ export const projects: Project[] = [
     status: "In Progress",
     year: "2026",
     featured: true,
-    coverImage: "/images/projects/scholarsphere-cover.jpg",
+    coverImage: "[ADD_COVER_IMAGE]",
     screenshots: [],
     links: {
       github: "https://github.com/EcoTraces/scholarsphere",
@@ -138,7 +138,7 @@ export const projects: Project[] = [
     status: "In Progress",
     year: "2026",
     featured: true,
-    coverImage: "/images/projects/agri-pest-disease-detection-cover.jpg",
+    coverImage: "[ADD_COVER_IMAGE]",
     screenshots: [],
     links: {
       github: undefined,
@@ -175,7 +175,7 @@ export const projects: Project[] = [
     status: "In Progress",
     year: "2026",
     featured: true,
-    coverImage: "/images/projects/digital-land-verification-cover.jpg",
+    coverImage: "[ADD_COVER_IMAGE]",
     screenshots: [],
     links: {
       github: undefined,

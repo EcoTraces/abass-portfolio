@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { StatusTag, TechBadge } from "@/components/ui/TechBadge";
 import { projects } from "@/data/projects";
 import { siteUrl } from "@/lib/site";
+import { isPlaceholder } from "@/lib/utils";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -22,6 +23,7 @@ export async function generateMetadata({
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   const url = `${siteUrl}/projects/${project.slug}`;
+  const image = isPlaceholder(project.coverImage) ? "/images/social-preview.jpg" : project.coverImage;
   return {
     title: project.name,
     description: project.shortDescription,
@@ -31,13 +33,13 @@ export async function generateMetadata({
       title: project.name,
       description: project.shortDescription,
       url,
-      images: [project.coverImage],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title: project.name,
       description: project.shortDescription,
-      images: [project.coverImage],
+      images: [image],
     },
   };
 }
@@ -99,8 +101,18 @@ export default async function ProjectCaseStudyPage({
         </div>
 
         <div className="mt-8 overflow-hidden rounded-sm border border-line-strong bg-bg-raised">
-          <div className="relative aspect-[16/9]">
-            <Image src={project.coverImage} alt={`${project.name} cover`} fill className="object-cover" />
+          <div className="bg-grid relative flex aspect-[16/9] items-center justify-center">
+            {isPlaceholder(project.coverImage) ? (
+              <span className="font-display text-4xl font-medium text-fg-faint">
+                {project.name
+                  .split(" ")
+                  .map((w) => w[0])
+                  .join("")
+                  .slice(0, 3)}
+              </span>
+            ) : (
+              <Image src={project.coverImage} alt={`${project.name} cover`} fill className="object-contain p-10" />
+            )}
           </div>
         </div>
 
