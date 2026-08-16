@@ -14,19 +14,22 @@ const nowContent = [
   {
     title: "Learning",
     items: [
-      "TODO — add what you're currently studying or exploring",
+      "Coursework toward my B.Sc. in Computer Science & Information Technology at Njala University",
     ],
   },
   {
     title: "Building",
     items: [
-      "TODO — add what you're currently building",
+      "ScholarSphere — helping undergraduate and postgraduate students find scholarships, fellowships, and other opportunities that support their studies",
+      "Agriculture Pest & Disease Detection System — computer-vision tool to help farmers identify crop pests and diseases early",
+      "Digital Land Verification System — reducing land fraud and ownership disputes through verifiable digital records",
     ],
   },
   {
     title: "Exploring",
     items: [
-      "TODO — add what you're currently exploring",
+      "Graduate programs in Cybersecurity, Data Science, Digital Transformation, AI, Software Engineering, or Project Management — narrowing down where to specialize at the master's level",
+      "How technology and digital transformation can solve real-world problems, support my community, and motivate youth engagement",
     ],
   },
 ];
