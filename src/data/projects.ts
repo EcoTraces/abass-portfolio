@@ -91,7 +91,7 @@ export const projects: Project[] = [
     coverImage: "[ADD_COVER_IMAGE]",
     screenshots: [],
     links: {
-      github: "https://github.com/EcoTraces/scholarsphere",
+      github: undefined,
       demo: undefined,
     },
     caseStudy: {

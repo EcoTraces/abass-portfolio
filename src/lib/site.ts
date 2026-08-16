@@ -1,2 +1,1 @@
-// TODO: replace with the deployed domain once this site is live.
-export const siteUrl = "https://example.com";
+export const siteUrl = "https://abass-portfolio-eta.vercel.app";
