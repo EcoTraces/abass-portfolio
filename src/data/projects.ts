@@ -11,12 +11,13 @@ export const projects: Project[] = [
     fullTitle: "EcoTrace: Intelligent Electronic Waste Recovery and Circular Economy Management System",
     shortDescription:
       "A mobile and backend system for scheduling e-waste pickups, tracking recovery, and coordinating collectors, recyclers, and households around a circular-economy workflow.",
-    categories: ["AI/ML", "Mobile", "Full Stack"],
+    categories: ["AI/ML", "Mobile", "Web", "Full Stack"],
     stack: [
       "Flutter",
       "Dart",
       "Python",
       "FastAPI",
+      "PyTorch",
       "Firebase Authentication",
       "Cloud Firestore",
       "Firebase Cloud Messaging",
@@ -39,11 +40,11 @@ export const projects: Project[] = [
       problem:
         "Electronic waste is one of the fastest-growing waste streams, but in many regions there is no structured pipeline connecting people who have e-waste with the collectors and recyclers who can process it responsibly. Pickup requests, classification, and reporting are handled informally or not at all.",
       motivation:
-        "Building a system that treats e-waste recovery as a logistics and data problem — not just an environmental slogan — was the motivation: give every stakeholder (household, collector, recycler, administrator) a clear role and a clear view of where an item is in the recovery process.",
+        "Building a system that treats e-waste recovery as a logistics and data problem — not just an environmental slogan — was the motivation: give every stakeholder, from household and business users to collectors, drivers, technicians, recyclers, environmental officers, administrators, and super administrators, a clear role and a clear view of where an item is in the recovery process.",
       solution:
-        "A Flutter mobile app for requesting and tracking pickups, paired with a FastAPI backend and Firebase services for authentication, real-time data, and notifications. AI-assisted classification helps categorize e-waste, and Google Maps Platform handles location and route-related functionality for pickup logistics.",
+        "A Flutter app — targeting Android, Web, and Windows from one codebase — for requesting and tracking pickups, paired with a FastAPI backend and Firebase services for authentication, real-time data, and notifications. A PyTorch-based classifier helps categorize e-waste from uploaded images, and Google Maps Platform handles location, route display, and route optimization for pickup logistics.",
       keyFeatures: [
-        "Role-based access for households, collectors, recyclers, and administrators",
+        "Role-based access across nine stakeholder types — household and business users, collectors, drivers, technicians, recyclers, environmental officers, administrators, and super administrators",
         "AI-assisted e-waste classification to help categorize items during intake",
         "Pickup scheduling and collection management workflow",
         "Location and route functionality for collectors using Google Maps Platform",
@@ -53,6 +54,7 @@ export const projects: Project[] = [
       architecture:
         "Flutter client communicating with a FastAPI backend deployed on Render; Cloud Firestore as the primary real-time data store; Firebase Authentication for identity and role management; Cloudinary for image storage; Google Maps Platform for geolocation and routing.",
       process: [
+        "Followed an Agile process, iterating on stakeholder workflows and features across sprints",
         "Defined stakeholder roles and the recovery workflow before writing code",
         "Built the data model in Cloud Firestore around pickup requests and item status",
         "Implemented the FastAPI service layer and connected it to the Flutter client",
@@ -60,17 +62,19 @@ export const projects: Project[] = [
       ],
       challenges: [
         {
-          challenge: "Coordinating role-based permissions across households, collectors, recyclers, and admins.",
+          challenge:
+            "Coordinating role-based permissions across nine stakeholder types — household and business users, collectors, drivers, technicians, recyclers, environmental officers, administrators, and super administrators.",
           solution:
             "Modeled roles explicitly in the data layer and enforced access rules at both the client and API level rather than relying on UI restrictions alone.",
         },
       ],
       technicalDecisions: [
-        "Chose Flutter for a single codebase across mobile platforms given the target users' device diversity.",
+        "Chose Flutter for a single codebase across Android, Web, and Windows given the target users' device diversity.",
         "Used Firebase for authentication and real-time data to reduce backend complexity while keeping FastAPI for custom business logic and AI integration.",
+        "Kept the PyTorch classifier as a separate service behind the FastAPI backend rather than embedding it in the client, so the model can be retrained or swapped without touching the Flutter app.",
       ],
       lessonsLearned:
-        "TODO — add reflections on what this project taught you technically and practically.",
+        "Extending the system to nine distinct stakeholder roles — household and business users, collectors, drivers, technicians, recyclers, environmental officers, administrators, and super administrators — made it clear that role-based access has to be designed into the data model from day one; retrofitting granular permissions after the schema exists is far more expensive than getting it right up front. Integrating a PyTorch-based image classifier for e-waste categorization surfaced a related lesson: treating classification as an isolated service rather than something baked into the Flutter client or FastAPI request path kept the Android, Web, and Windows builds simple while leaving room to retrain or swap the model independently. Targeting three platforms from a single Flutter codebase also meant every feature — pickup scheduling, route display, image upload — had to be validated across three different runtime environments, a heavier testing burden than a single-platform app but one that paid off given how differently household users, businesses, and field staff (collectors, drivers, technicians) actually access the system.",
     },
   },
   {
