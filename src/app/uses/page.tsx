@@ -17,7 +17,7 @@ const uses = [
   },
   {
     label: "Languages",
-    value: "TypeScript, Python, Dart, C++",
+    value: "TypeScript, JavaScript, Python, Dart, Java, C++, R, HTML, CSS",
   },
   {
     label: "Frontend",
@@ -25,15 +25,23 @@ const uses = [
   },
   {
     label: "Backend",
-    value: "Node.js, FastAPI, Express",
+    value: "Node.js, FastAPI, Express, Resend",
+  },
+  {
+    label: "Database",
+    value: "Supabase, Microsoft SQL Server",
   },
   {
     label: "Cloud",
-    value: "Render, Firebase, Cloudinary",
+    value: "Vercel, Render, Firebase, Cloudinary",
   },
   {
     label: "Mobile",
     value: "Flutter",
+  },
+  {
+    label: "CMS",
+    value: "Joomla",
   },
   {
     label: "Version Control",
