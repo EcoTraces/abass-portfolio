@@ -1,0 +1,15 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npm run start",
+      "startServerReadyPattern": "Ready in",
+      "startServerReadyTimeout": 30000,
+      "url": ["http://localhost:3000/"],
+      "numberOfRuns": 1
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": "./lhci-results"
+    }
+  }
+}
