@@ -13,7 +13,9 @@ export const profile = {
   github: "https://github.com/EcoTraces",
   linkedin: "https://www.linkedin.com/in/abass-david-komeh-35a345300",
   resumePath: "/resume/resume.pdf",
+  resumeDocxPath: "/resume/resume.docx",
   profileImage: "/images/profile.jpg",
+  researchInterests: "AI/ML, computer vision, cybersecurity, sustainability",
   about: [
     "I'm a Computer Science graduate from Njala University in Sierra Leone, interested in using software and AI to solve practical local problems.",
     "Most of what I've learned has come from building. EcoTrace, my final-year project, is an e-waste pickup and recovery app that I piloted with a small group of households. I've also built a fingerprint-based attendance app, a library management system, and ScholarSphere, a platform that helps students find scholarships. During a 2025 internship at the Huawei Network Operations Centre with Orange Sierra Leone, I saw how real systems are monitored and kept running.",
