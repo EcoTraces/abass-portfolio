@@ -138,8 +138,7 @@ export function Hero() {
                     ["Focus", "AI · Mobile · Cloud"],
                     ["Based in", profile.location],
                     ["Education", "B.Sc. Computer Science"],
-                    ["Graduating", "November 2026"],
-                    ["Status", "Open to roles"],
+                    ["Status", "Class of 2026 · Seeking MSc 2027"],
                   ].map(([label, value]) => (
                     <div key={label} className="flex items-center justify-between py-3 font-mono text-xs">
                       <dt className="text-fg-faint uppercase tracking-wider">{label}</dt>

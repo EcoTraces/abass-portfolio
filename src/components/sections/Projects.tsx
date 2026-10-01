@@ -1,4 +1,4 @@
-import { projects } from "@/data/projects";
+import { featuredProjects, moreProjects } from "@/data/projects";
 import { ProjectExplorer } from "../projects/ProjectExplorer";
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
@@ -13,7 +13,18 @@ export function Projects() {
           title="Featured Projects"
           description="A few systems I've built end to end — each one framed as an engineering case study rather than a screenshot gallery."
         />
-        <ProjectExplorer projects={projects} />
+        <ProjectExplorer projects={featuredProjects} />
+
+        <div className="mt-16">
+          <SectionHeading
+            index="06"
+            label="More"
+            title="Additional work"
+            description="Other in-progress ideas and prototypes I'm continuing to develop."
+            className="mb-8"
+          />
+          <ProjectExplorer projects={moreProjects} />
+        </div>
       </Container>
     </section>
   );

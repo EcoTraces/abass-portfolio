@@ -14,7 +14,7 @@ const nowContent = [
   {
     title: "Learning",
     items: [
-      "Coursework toward my B.Sc. in Computer Science & Information Technology at Njala University",
+      "Coursework toward my B.Sc. Computer Science, First Class Honours, Njala University",
     ],
   },
   {

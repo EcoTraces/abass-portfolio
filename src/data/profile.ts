@@ -3,10 +3,10 @@ import { SocialLink } from "@/types";
 export const profile = {
   name: "Abass David Komeh",
   initials: "ADK",
-  headline: "Computer Science Student — Software Engineer",
+  headline: "Computer Science Graduate — Software Engineer",
   positioning:
-    "Final-year Computer Science student applying AI, software engineering, and cybersecurity to practical problems in sustainability and digital transformation.",
-  program: "B.Sc. Computer Science & Information Technology",
+    "Computer Science graduate interested in practical software and AI solutions for local challenges.",
+  program: "B.Sc. Computer Science, First Class Honours, Njala University",
   location: "Sierra Leone",
   phone: "+23280395457",
   email: "abassdavidsonkomeh@gmail.com",
@@ -15,10 +15,9 @@ export const profile = {
   resumePath: "/resume/resume.pdf",
   profileImage: "/images/profile.jpg",
   about: [
-    "Final-year Computer Science student at Njala University with an expected First-Class Honours degree and a cumulative GPA above 4.0 throughout the first three years of study.",
-    "Passionate about applying artificial intelligence, software engineering, and cybersecurity to practical challenges in environmental sustainability and digital transformation.",
-    "Completed a Network Operations Centre internship with Huawei Technologies under Orange Sierra Leone and led software development projects from concept through implementation and technical documentation.",
-    "Currently seeking opportunities in engineering, research, or collaborative roles where I can apply rigorous systems thinking to real-world problems.",
+    "I'm a Computer Science graduate from Njala University in Sierra Leone, interested in using software and AI to solve practical local problems.",
+    "Most of what I've learned has come from building. EcoTrace, my final-year project, is an e-waste pickup and recovery app that I piloted with a small group of households. I've also built a fingerprint-based attendance app, a library management system, and ScholarSphere, a platform that helps students find scholarships. During a 2025 internship at the Huawei Network Operations Centre with Orange Sierra Leone, I saw how real systems are monitored and kept running.",
+    "I'm now looking to continue my studies at Master's level in AI, machine learning, or cybersecurity, and to keep working on technology that supports sustainability and digital inclusion.",
   ],
 } as const;
 

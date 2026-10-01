@@ -31,51 +31,55 @@ interface GitHubApiUser {
 }
 
 export async function fetchGitHubProfile(username: string): Promise<GitHubProfileData | null> {
-  const userRes = await fetch(`https://api.github.com/users/${username}`, {
-    next: { revalidate: 3600 },
-    headers: {
-      Accept: "application/vnd.github.v3+json",
-    },
-  });
-
-  if (!userRes.ok) return null;
-  const userData: GitHubApiUser = await userRes.json();
-
-  const repoRes = await fetch(
-    `https://api.github.com/users/${username}/repos?sort=updated&per_page=8`,
-    {
+  try {
+    const userRes = await fetch(`https://api.github.com/users/${username}`, {
       next: { revalidate: 3600 },
       headers: {
         Accept: "application/vnd.github.v3+json",
       },
-    }
-  );
-
-  const repos: GitHubApiRepo[] = repoRes.ok ? await repoRes.json() : [];
-  const languageCounts = new Map<string, number>();
-
-  const recentRepos = Array.isArray(repos)
-    ? repos.map((repo) => ({ name: repo.name, url: repo.html_url }))
-    : [];
-
-  if (Array.isArray(repos)) {
-    repos.forEach((repo) => {
-      if (repo.language) {
-        languageCounts.set(repo.language, (languageCounts.get(repo.language) ?? 0) + 1);
-      }
     });
+
+    if (!userRes.ok) return null;
+    const userData: GitHubApiUser = await userRes.json();
+
+    const repoRes = await fetch(
+      `https://api.github.com/users/${username}/repos?sort=updated&per_page=8`,
+      {
+        next: { revalidate: 3600 },
+        headers: {
+          Accept: "application/vnd.github.v3+json",
+        },
+      }
+    );
+
+    const repos: GitHubApiRepo[] = repoRes.ok ? await repoRes.json() : [];
+    const languageCounts = new Map<string, number>();
+
+    const recentRepos = Array.isArray(repos)
+      ? repos.map((repo) => ({ name: repo.name, url: repo.html_url }))
+      : [];
+
+    if (Array.isArray(repos)) {
+      repos.forEach((repo) => {
+        if (repo.language) {
+          languageCounts.set(repo.language, (languageCounts.get(repo.language) ?? 0) + 1);
+        }
+      });
+    }
+
+    const topLanguages = Array.from(languageCounts.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 4)
+      .map(([language]) => language);
+
+    return {
+      username,
+      publicRepos: userData.public_repos ?? 0,
+      updatedAt: userData.updated_at ?? new Date().toISOString(),
+      topLanguages,
+      recentRepos: recentRepos.slice(0, 4),
+    };
+  } catch {
+    return null;
   }
-
-  const topLanguages = Array.from(languageCounts.entries())
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 4)
-    .map(([language]) => language);
-
-  return {
-    username,
-    publicRepos: userData.public_repos ?? 0,
-    updatedAt: userData.updated_at ?? new Date().toISOString(),
-    topLanguages,
-    recentRepos: recentRepos.slice(0, 4),
-  };
 }

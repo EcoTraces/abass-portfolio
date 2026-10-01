@@ -4,7 +4,7 @@ import { Project } from "@/types";
 // Screenshots: expected at /public/images/projects/{slug}-01.jpg, -02.jpg, ... (1600x1000)
 // Until real assets are added, the UI falls back to a generated placeholder panel.
 
-export const projects: Project[] = [
+export const featuredProjects: Project[] = [
   {
     slug: "ecotrace",
     name: "EcoTrace",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     },
     caseStudy: {
       overview:
-        "EcoTrace is a flagship project built around a practical problem: electronic waste in growing urban areas rarely gets recovered in a structured way. The system connects households and businesses that need to dispose of e-waste with collectors and recyclers, using scheduling, classification, and tracking to keep the process organized.",
+        "EcoTrace is a flagship project built around a practical problem: electronic waste in growing urban areas rarely gets recovered in a structured way. The system connects households and businesses that need to dispose of e-waste with collectors and recyclers, using scheduling, classification, and tracking to keep the process organized. It was piloted with about 8 households.",
       problem:
         "Electronic waste is one of the fastest-growing waste streams, but in many regions there is no structured pipeline connecting people who have e-waste with the collectors and recyclers who can process it responsibly. Pickup requests, classification, and reporting are handled informally or not at all.",
       motivation:
@@ -81,6 +81,94 @@ export const projects: Project[] = [
       ],
       lessonsLearned:
         "Extending the system to nine distinct stakeholder roles — household and business users, collectors, drivers, technicians, recyclers, environmental officers, administrators, and super administrators — made it clear that role-based access has to be designed into the data model from day one; retrofitting granular permissions after the schema exists is far more expensive than getting it right up front. Integrating a PyTorch-based image classifier for e-waste categorization surfaced a related lesson: treating classification as an isolated service rather than something baked into the Flutter client or FastAPI request path kept the Android, Web, and Windows builds simple while leaving room to retrain or swap the model independently. Targeting three platforms from a single Flutter codebase also meant every feature — pickup scheduling, route display, image upload — had to be validated across three different runtime environments, a heavier testing burden than a single-platform app but one that paid off given how differently household users, businesses, and field staff (collectors, drivers, technicians) actually access the system.",
+    },
+  },
+  {
+    slug: "biometric-attendance-system",
+    name: "Biometric Attendance System",
+    fullTitle: "Biometric Attendance System",
+    shortDescription:
+      "An Android attendance app using fingerprint-based authentication and Firebase-backed data management to record student or staff presence.",
+    categories: ["Mobile", "Full Stack"],
+    stack: ["Kotlin", "Jetpack Compose", "Firebase", "Firebase Authentication", "Android Fingerprint Authentication"],
+    status: "Completed",
+    year: "2025",
+    featured: true,
+    coverImage: "[ADD_COVER_IMAGE]",
+    screenshots: [],
+    links: {
+      github: undefined,
+      demo: undefined,
+    },
+    caseStudy: {
+      overview:
+        "A fingerprint-based attendance application built for reliable, low-friction check-in using Android devices and Firebase for storage and authentication.",
+      problem:
+        "Manual attendance tracking is slow, error-prone, and easy to manipulate, especially where attendance needs to be recorded quickly and consistently.",
+      motivation:
+        "Use device-based biometric verification to make attendance more reliable without adding unnecessary complexity for end users.",
+      solution:
+        "A Kotlin and Jetpack Compose Android app with fingerprint verification and Firebase-backed record storage, giving a simple attendance workflow tied to real-time data capture.",
+      keyFeatures: [
+        "Fingerprint-based authentication for attendance check-in",
+        "Real-time attendance recording with Firebase",
+        "Simple Android UI built with Jetpack Compose",
+        "Role-friendly activity flow for quick use in a classroom or workplace setting",
+      ],
+      architecture: "Android client built with Kotlin and Jetpack Compose, integrated with Firebase Authentication and Cloud Firestore for attendance events.",
+      process: [
+        "Mapped the attendance workflow around a verification step before recording identity",
+        "Built the Android interface and authentication flow around a minimal, user-friendly check-in experience",
+        "Connected the app to Firebase to store verified attendance records and keep the flow synchronized",
+      ],
+      technicalDecisions: [
+        "Used Firebase to keep the data layer simple while the app remained focused on biometric attendance verification.",
+      ],
+      lessonsLearned: "TODO — add reflections on what this project taught you technically and practically.",
+    },
+  },
+  {
+    slug: "library-management-system",
+    name: "Library Management System",
+    fullTitle: "Library Management System",
+    shortDescription:
+      "A library platform for managing books, borrowers, lending, and returns with a streamlined web interface and cloud-backed data layer.",
+    categories: ["Web", "Full Stack"],
+    stack: ["React", "TypeScript", "Supabase", "Node.js", "Vercel"],
+    status: "Completed",
+    year: "2025",
+    featured: true,
+    coverImage: "[ADD_COVER_IMAGE]",
+    screenshots: [],
+    links: {
+      github: undefined,
+      demo: undefined,
+    },
+    caseStudy: {
+      overview:
+        "A web-based library management system for tracking books, members, borrowing, and returns in a simple, organized workflow.",
+      problem:
+        "Manual library management can quickly become difficult to track as collections and member records grow.",
+      motivation:
+        "Create a clean record-keeping tool that makes borrowing and return workflows easier to manage for staff and users.",
+      solution:
+        "A React and TypeScript frontend connected to a Node.js backend and Supabase for storage, with Vercel hosting the application and its data workflows in the cloud.",
+      keyFeatures: [
+        "Book catalog management",
+        "Borrower and member records",
+        "Issue and return tracking",
+        "Simple dashboard for library operations",
+      ],
+      architecture: "React frontend with TypeScript, Supabase for data storage, and a Node.js service layer deployed via Vercel for the web app.",
+      process: [
+        "Mapped the library workflow to cover catalog, borrowing, and record-keeping needs",
+        "Built the frontend around a simple management dashboard and records interface",
+        "Connected the app to Supabase to keep the data model reliable and easy to evolve",
+      ],
+      technicalDecisions: [
+        "Used Supabase to reduce setup time for the database layer while keeping the interface responsive and easy to maintain.",
+      ],
+      lessonsLearned: "TODO — add reflections on what this project taught you technically and practically.",
     },
   },
   {
@@ -137,6 +225,9 @@ export const projects: Project[] = [
       lessonsLearned: "TODO — add reflections on what this project taught you technically and practically.",
     },
   },
+];
+
+export const moreProjects: Project[] = [
   {
     slug: "agri-pest-disease-detection",
     name: "Agriculture Pest & Disease Detection",
@@ -147,7 +238,7 @@ export const projects: Project[] = [
     stack: ["Flutter", "Firebase", "Computer Vision"],
     status: "In Progress",
     year: "2026",
-    featured: true,
+    featured: false,
     coverImage: "[ADD_COVER_IMAGE]",
     screenshots: [],
     links: {
@@ -184,7 +275,7 @@ export const projects: Project[] = [
     stack: ["React", "Node.js", "Express"],
     status: "In Progress",
     year: "2026",
-    featured: true,
+    featured: false,
     coverImage: "[ADD_COVER_IMAGE]",
     screenshots: [],
     links: {
@@ -214,5 +305,7 @@ export const projects: Project[] = [
     },
   },
 ];
+
+export const projects: Project[] = [...featuredProjects, ...moreProjects];
 
 export const projectCategories = ["All", "AI/ML", "Web", "Mobile", "Full Stack", "Research"] as const;

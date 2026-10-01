@@ -17,6 +17,7 @@ export function Education() {
               <h3 className="mt-3 font-display text-lg font-medium text-fg">{entry.credential}</h3>
               <p className="mt-1 text-sm text-fg-muted">{entry.institution}</p>
               <p className="mt-1 text-xs text-fg-faint">{entry.location}</p>
+              {entry.notes && <p className="mt-3 text-sm text-fg-faint">{entry.notes}</p>}
             </RevealItem>
           ))}
         </RevealGroup>

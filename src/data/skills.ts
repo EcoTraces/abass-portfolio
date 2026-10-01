@@ -3,7 +3,7 @@ import { SkillGroup } from "@/types";
 export const skillGroups: SkillGroup[] = [
   {
     category: "Languages",
-    items: ["Python", "Dart", "Java", "C++", "JavaScript", "TypeScript", "SQL"],
+    items: ["Python", "Dart", "JavaScript", "TypeScript", "SQL"],
   },
   {
     category: "Frontend",
@@ -11,7 +11,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "Mobile",
-    items: ["Flutter", "Dart"],
+    items: ["Flutter", "Kotlin", "Jetpack Compose", "Android Development"],
   },
   {
     category: "Backend",
@@ -19,19 +19,19 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "Database",
-    items: ["Cloud Firestore", "SQL"],
+    items: ["Cloud Firestore", "Supabase", "SQL"],
   },
   {
     category: "Cloud & Infrastructure",
-    items: ["Firebase", "Firebase Authentication", "Firebase Cloud Messaging", "Render", "Google Maps Platform", "Cloudinary"],
+    items: ["Firebase", "Firebase Authentication", "Firebase Cloud Messaging", "Render", "Google Maps Platform", "Cloudinary", "Vercel"],
   },
   {
     category: "AI / Machine Learning",
     items: ["PyTorch", "Computer Vision", "Applied ML", "Artificial Intelligence"],
   },
   {
-    category: "Security & Engineering",
-    items: ["Cybersecurity", "Software Engineering"],
+    category: "Currently learning",
+    items: ["Cybersecurity"],
   },
   {
     category: "Development Tools",

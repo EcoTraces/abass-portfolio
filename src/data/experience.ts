@@ -3,19 +3,19 @@ import { ExperienceEntry } from "@/types";
 export const experience: ExperienceEntry[] = [
   {
     id: "huawei-noc",
-    organization: "Huawei Network Operation Center",
+    organization: "Huawei Network Operations Centre",
     role: "Intern",
-    context: "Under Orange Sierra Leone",
+    context: "Via Orange Sierra Leone",
     location: "Sierra Leone",
     startDate: "2025-06",
     endDate: "2025-08",
     type: "internship",
     summary:
-      "Completed professional training in network operations at the Huawei Network Operation Center hosted through Orange Sierra Leone, gaining practical exposure to telecom operations and monitoring.",
+      "Completed a 2025 internship at the Huawei Network Operations Centre through Orange Sierra Leone, gaining hands-on exposure to telecom monitoring, incident handling, and operational support.",
     responsibilities: [
-      "Participated in network monitoring and fault management workflows.",
-      "Assisted with operational support tasks and incident triage.",
-      "Documented operational procedures and contributed to team handovers.",
+      "Monitored live network alarms and service indicators to help maintain uptime and support early escalation of issues. [TODO: specify the monitoring workflow and service-impact outcome.]",
+      "Assisted with incident logging, troubleshooting, and handovers to keep operational records clear and support continuity between teams. [TODO: specify the escalation or ticket workflow you used.]",
+      "Documented monitoring checks and operational procedures to strengthen shift handovers and improve team continuity. [TODO: specify the SOP or checklist you maintained.]",
     ],
   },
 ];
