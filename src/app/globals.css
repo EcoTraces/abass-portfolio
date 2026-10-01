@@ -72,7 +72,25 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
   transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.04em;
+}
+
+p,
+ul,
+ol,
+li {
+  letter-spacing: 0;
 }
 
 ::selection {
@@ -83,7 +101,17 @@ body {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.surface-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 }
 
 .tabular {

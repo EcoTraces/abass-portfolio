@@ -51,15 +51,21 @@ const structuredData = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${profile.name} — ${profile.headline}`,
-    template: `%s — ${profile.name}`,
+    default: `${profile.name} | MSc-seeking Computer Science Graduate`,
+    template: `%s | ${profile.name}`,
   },
-  description: profile.positioning,
+  description:
+    "MSc-seeking Computer Science graduate from Njala University in Sierra Leone, focused on AI/ML, computer vision, cybersecurity, and sustainability-driven software engineering.",
   alternates: { canonical: siteUrl },
   keywords: [
+    "MSc-seeking Computer Science graduate",
     "Software Engineer",
     "Computer Science",
     "Artificial Intelligence",
+    "Machine Learning",
+    "Computer Vision",
+    "Cybersecurity",
+    "Sustainability",
     "Full-Stack Development",
     "Mobile Development",
     "Sierra Leone",
@@ -68,16 +74,18 @@ export const metadata: Metadata = {
   authors: [{ name: profile.name }],
   openGraph: {
     type: "website",
-    title: `${profile.name} — ${profile.headline}`,
-    description: profile.positioning,
+    title: `${profile.name} | MSc-seeking Computer Science Graduate`,
+    description:
+      "MSc-seeking Computer Science graduate from Njala University in Sierra Leone, focused on AI/ML, computer vision, cybersecurity, and sustainability-driven software engineering.",
     url: siteUrl,
     siteName: profile.name,
     images: ["/images/social-preview.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} — ${profile.headline}`,
-    description: profile.positioning,
+    title: `${profile.name} | MSc-seeking Computer Science Graduate`,
+    description:
+      "MSc-seeking Computer Science graduate from Njala University in Sierra Leone, focused on AI/ML, computer vision, cybersecurity, and sustainability-driven software engineering.",
     images: ["/images/social-preview.jpg"],
   },
   icons: {

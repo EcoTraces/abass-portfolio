@@ -17,7 +17,7 @@ export function ProjectCard({ project }: { project: Project }) {
       exit={{ opacity: 0, y: -8 }}
       whileHover={{ y: -6 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      className="group flex flex-col overflow-hidden rounded-sm border border-line-strong bg-bg-raised transition-colors hover:border-accent"
+      className="group flex flex-col overflow-hidden rounded-lg border border-line-strong bg-bg-raised shadow-[0_1px_0_rgba(255,255,255,0.02)] transition-colors hover:border-accent/70 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
     >
       <Link href={`/projects/${project.slug}`} className="relative block aspect-16/10 overflow-hidden border-b border-line">
         <div className="bg-grid absolute inset-0 flex items-center justify-center opacity-60">
@@ -34,7 +34,7 @@ export function ProjectCard({ project }: { project: Project }) {
         {hasCover && (
           <Image
             src={project.coverImage}
-            alt={`${project.name} icon`}
+            alt={`${project.name} project cover`}
             fill
             className="object-contain p-8"
           />

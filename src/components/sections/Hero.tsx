@@ -40,7 +40,7 @@ export function Hero() {
           <motion.div variants={primaryColumn} initial="hidden" animate="visible">
             <motion.div
               variants={item}
-              className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-accent"
+              className="mb-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-accent"
             >
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
@@ -51,19 +51,40 @@ export function Hero() {
 
             <motion.h1
               variants={item}
-              className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-fg sm:text-6xl"
+              className="font-display text-4xl font-medium leading-[0.95] tracking-[-0.06em] text-fg sm:text-5xl lg:text-6xl"
             >
               {profile.name}
             </motion.h1>
             <motion.p
               variants={item}
-              className="mt-4 font-mono text-sm uppercase tracking-wider text-fg-muted sm:text-base"
+              className="mt-4 font-mono text-sm uppercase tracking-[0.16em] text-fg-muted sm:text-base"
             >
               {profile.headline}
             </motion.p>
-            <motion.p variants={item} className="mt-6 max-w-xl text-lg leading-relaxed text-fg-muted">
+            <motion.p variants={item} className="mt-6 max-w-2xl text-lg leading-relaxed text-fg-muted">
               {profile.positioning}
             </motion.p>
+
+            <motion.div variants={item} className="mt-6 max-w-2xl">
+              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-faint">
+                Research interests
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "AI/ML",
+                  "Computer vision",
+                  "Cybersecurity",
+                  "Sustainability",
+                ].map((interest) => (
+                  <span
+                    key={interest}
+                    className="inline-flex items-center rounded-full border border-line-strong bg-bg-raised px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted"
+                  >
+                    {interest}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
 
             <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
               <Button href="/resume" variant="primary">
@@ -126,7 +147,7 @@ export function Hero() {
                 )}
               </motion.div>
 
-              <motion.div variants={item} className="rounded-sm border border-line-strong bg-bg-raised">
+              <motion.div variants={item} className="overflow-hidden rounded-lg border border-line-strong bg-bg-raised shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
                 <div className="flex items-center justify-between border-b border-line px-4 py-3">
                   <span className="font-mono text-[11px] uppercase tracking-widest text-fg-faint">
                     status.log
