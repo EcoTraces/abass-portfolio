@@ -7,9 +7,9 @@ export const education: EducationEntry[] = [
     credential: "B.Sc. Computer Science, First Class Honours, Njala University",
     location: "Sierra Leone",
     startDate: "2022",
-    endDate: "November 2026",
+    endDate: "2026",
     status: "expected",
     notes:
-      "GPA: [TODO: X.XX / scale] | Coursework: Artificial Intelligence, Software Engineering, Cybersecurity, Database Systems, Computer Networks, Systems Analysis & Design, Mobile Application Development.",
+      "Coursework: Artificial Intelligence, Software Engineering, Cybersecurity, Database Systems, Computer Networks, Systems Analysis & Design, Mobile Application Development.",
   },
 ];
