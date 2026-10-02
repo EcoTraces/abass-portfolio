@@ -171,11 +171,16 @@ async function main() {
   );
 
   const mapping = Object.fromEntries(
-    skills.map((skill) => [skill.name, { category: skill.category, icon: skill.iconKey, currentlyLearning: Boolean(skill.currentlyLearning) }]),
+    skills.map((skill) => [
+      `${skill.category}: ${skill.name}`,
+      { icon: skill.iconKey, currentlyLearning: Boolean(skill.currentlyLearning) },
+    ]),
   );
 
   console.log("Seeded Sanity CMS");
-  console.log(JSON.stringify({ siteSettings, createdCategories: createdCategories.length, createdSkills: createdSkills.length, createdProjects: createdProjects.length, createdExperience: createdExperience.length, createdEducation: createdEducation.length, createdCertifications: createdCertifications.length, createdPosts: createdPosts.length, iconMapping: mapping }, null, 2));
+  console.log(JSON.stringify({ siteSettings, createdCategories: createdCategories.length, createdSkills: createdSkills.length, createdProjects: createdProjects.length, createdExperience: createdExperience.length, createdEducation: createdEducation.length, createdCertifications: createdCertifications.length, createdPosts: createdPosts.length }, null, 2));
+  console.log("Skill icon mapping:");
+  console.log(JSON.stringify(mapping, null, 2));
 }
 
 main().catch((error) => {

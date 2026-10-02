@@ -28,6 +28,7 @@ const skillIconOptions = [
   "siDart",
   "siJavascript",
   "siTypescript",
+  "siHtml5",
   "Database",
   "siReact",
   "siNextdotjs",
@@ -57,7 +58,7 @@ const skillIconOptions = [
   "Sparkles",
   "siGit",
   "siGithub",
-  "siVisualstudiocode",
+  "Terminal",
   "siPostman",
   "Shield",
 ];
@@ -226,17 +227,6 @@ const educationType = defineType({
   ],
 });
 
-const skillGroupType = defineType({
-  name: "skillGroup",
-  title: "Skill Group",
-  type: "document",
-  fields: [
-    defineField({ name: "category", type: "string", validation: (Rule) => Rule.required() }),
-    defineField({ name: "items", type: "array", of: [{ type: "string" }], validation: (Rule) => Rule.required().min(1) }),
-    defineField({ name: "order", type: "number", validation: (Rule) => Rule.required().min(0) }),
-  ],
-});
-
 const certificationType = defineType({
   name: "certification",
   title: "Certification",
@@ -275,7 +265,6 @@ export const schemaTypes = [
   projectType,
   experienceType,
   educationType,
-  skillGroupType,
   certificationType,
   blogPostType,
 ];

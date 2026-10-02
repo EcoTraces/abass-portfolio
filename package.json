@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "check:skill-icons": "tsx scripts/check-skill-icons.ts",
     "generate:resume": "tsx scripts/generate-resume.ts",
     "test:e2e": "playwright test",
     "lhci": "lhci autorun"

@@ -21,7 +21,7 @@ export const skills: SkillItem[] = [
   { name: "React", category: "Frontend", order: 0, iconKey: "siReact", iconSource: "library" },
   { name: "Next.js", category: "Frontend", order: 1, iconKey: "siNextdotjs", iconSource: "library" },
   { name: "Tailwind CSS", category: "Frontend", order: 2, iconKey: "siTailwindcss", iconSource: "library" },
-  { name: "HTML/CSS", category: "Frontend", order: 3, iconKey: "Code2", iconSource: "library" },
+  { name: "HTML/CSS", category: "Frontend", order: 3, iconKey: "siHtml5", iconSource: "library" },
   { name: "Flutter", category: "Mobile", order: 0, iconKey: "siFlutter", iconSource: "library" },
   { name: "Kotlin", category: "Mobile", order: 1, iconKey: "siKotlin", iconSource: "library" },
   { name: "Jetpack Compose", category: "Mobile", order: 2, iconKey: "MonitorSmartphone", iconSource: "library" },
@@ -46,10 +46,23 @@ export const skills: SkillItem[] = [
   { name: "Artificial Intelligence", category: "AI / Machine Learning", order: 3, iconKey: "Sparkles", iconSource: "library" },
   { name: "Git", category: "Development Tools", order: 0, iconKey: "siGit", iconSource: "library" },
   { name: "GitHub", category: "Development Tools", order: 1, iconKey: "siGithub", iconSource: "library" },
-  { name: "VS Code", category: "Development Tools", order: 2, iconKey: "Code2", iconSource: "library" },
+  { name: "VS Code", category: "Development Tools", order: 2, iconKey: "Terminal", iconSource: "library" },
   { name: "Postman", category: "Development Tools", order: 3, iconKey: "siPostman", iconSource: "library" },
   { name: "Cybersecurity", category: "Currently learning", order: 0, iconKey: "Shield", iconSource: "library", currentlyLearning: true },
 ] as const satisfies SkillItem[];
+
+const iconOwners = new Map<string, string>();
+
+for (const skill of skills) {
+  if (skill.iconSource !== "library" || !skill.iconKey) continue;
+
+  const existingOwner = iconOwners.get(skill.iconKey);
+  if (existingOwner) {
+    throw new Error(`Skills must use unique icon keys: ${existingOwner} and ${skill.name} both use ${skill.iconKey}`);
+  }
+
+  iconOwners.set(skill.iconKey, skill.name);
+}
 
 export const skillGroups: SkillGroup[] = skillCategories.map((category) => ({
   category: category.title,

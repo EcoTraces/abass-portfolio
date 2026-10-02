@@ -1,6 +1,3 @@
-import { BackToTop } from "@/components/layout/BackToTop";
-import { Footer } from "@/components/layout/Footer";
-import { Navbar } from "@/components/layout/Navbar";
 import { profile, socialLinks } from "@/data/profile";
 import { getSiteSettings } from "@/lib/content";
 import { isPlaceholder } from "@/lib/utils";
@@ -9,6 +6,8 @@ import { siteUrl } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { PortfolioFooter, PortfolioHeader } from "@/components/layout/PortfolioChrome";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
@@ -132,16 +131,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <MotionProvider>
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-sm focus:bg-accent focus:px-4 focus:py-2 focus:text-[#14171c]"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-100 focus:rounded-sm focus:bg-accent focus:px-4 focus:py-2 focus:text-[#14171c]"
           >
             Skip to content
           </a>
-          <Navbar />
+          <Suspense fallback={null}>
+            <PortfolioHeader />
+          </Suspense>
           <main id="main" className="flex-1">
             {children}
           </main>
-          <Footer />
-          <BackToTop />
+          <Suspense fallback={null}>
+            <PortfolioFooter />
+          </Suspense>
         </MotionProvider>
         <Analytics />
         <SpeedInsights />

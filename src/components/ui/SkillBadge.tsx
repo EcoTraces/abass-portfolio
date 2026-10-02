@@ -22,6 +22,7 @@ import {
   Smartphone,
   Sparkles,
   TableProperties,
+  Terminal,
   CodeXml,
   Waypoints,
 } from "lucide-react";
@@ -33,6 +34,7 @@ const iconMap: Record<string, any> = {
   siDart: SiIcons.SiDart,
   siJavascript: SiIcons.SiJavascript,
   siTypescript: SiIcons.SiTypescript,
+  siHtml5: SiIcons.SiHtml5,
   Database,
   siReact: SiIcons.SiReact,
   siNextdotjs: SiIcons.SiNextdotjs,
@@ -54,7 +56,7 @@ const iconMap: Record<string, any> = {
   MessageSquareMore,
   CloudFog,
   MapPinned,
-  ImageIcon,
+  Image: ImageIcon,
   siVercel: SiIcons.SiVercel,
   siPytorch: SiIcons.SiPytorch,
   Eye,
@@ -64,6 +66,7 @@ const iconMap: Record<string, any> = {
   siGithub: SiIcons.SiGithub,
   siPostman: SiIcons.SiPostman,
   Shield,
+  Terminal,
   CodeXml,
   Waypoints,
 };
