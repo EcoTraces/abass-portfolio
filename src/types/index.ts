@@ -36,9 +36,22 @@ export interface Project {
   caseStudy: ProjectCaseStudy;
 }
 
+export type SkillIconSource = "library" | "upload";
+
+export interface SkillItem {
+  name: string;
+  category?: string;
+  order?: number;
+  iconKey?: string;
+  iconSource?: SkillIconSource;
+  iconImage?: string;
+  iconImageAlt?: string;
+  currentlyLearning?: boolean;
+}
+
 export interface SkillGroup {
   category: string;
-  items: string[];
+  items: Array<string | SkillItem>;
 }
 
 export interface ExperienceEntry {

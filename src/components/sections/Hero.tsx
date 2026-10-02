@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { profile, socialLinks } from "@/data/profile";
+import type { SiteSettings } from "@/lib/content";
 import { isPlaceholder } from "@/lib/utils";
 import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "../ui/Button";
@@ -28,7 +29,15 @@ const item: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
 };
 
-export function Hero() {
+type HeroProps = {
+  siteSettings?: SiteSettings;
+};
+
+export function Hero({ siteSettings }: HeroProps) {
+  const statusLine = siteSettings?.statusLine || "Open to opportunities";
+  const heroProfileImage = siteSettings?.profileImage || profile.profileImage;
+  const heroProfileImageAlt = siteSettings?.profileImageAlt || profile.profileImageAlt || `${profile.name} portrait`;
+
   return (
     <section id="home" className="relative overflow-hidden border-b border-line pt-8 sm:pt-12">
       <div
@@ -46,7 +55,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
               </span>
-              Open to opportunities
+              {statusLine}
             </motion.div>
 
             <motion.h1
@@ -132,12 +141,13 @@ export function Hero() {
           >
             <div className="w-full max-w-sm space-y-6">
               <motion.div variants={item} className="overflow-hidden rounded-sm border border-line-strong bg-bg-raised">
-                {profile.profileImage && !isPlaceholder(profile.profileImage) ? (
+                {heroProfileImage && !isPlaceholder(heroProfileImage) ? (
                   <Image
-                    src={profile.profileImage}
-                    alt={`${profile.name} portrait`}
+                    src={heroProfileImage}
+                    alt={heroProfileImageAlt}
                     width={461}
                     height={567}
+                    priority
                     className="aspect-[461/567] w-full object-cover"
                   />
                 ) : (

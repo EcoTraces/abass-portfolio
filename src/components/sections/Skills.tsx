@@ -1,10 +1,12 @@
-import { skillGroups } from "@/data/skills";
+import { getSkillGroups } from "@/lib/content";
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
-import { TechBadge } from "../ui/TechBadge";
+import { SkillBadge } from "../ui/SkillBadge";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
-export function Skills() {
+export default async function Skills() {
+  const skillGroups = await getSkillGroups();
+
   return (
     <section id="skills" className="border-b border-line py-14 sm:py-20 lg:py-28">
       <Container>
@@ -21,9 +23,16 @@ export function Skills() {
                 {group.category}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <TechBadge key={item}>{item}</TechBadge>
-                ))}
+                {group.items.map((item, index) => {
+                  const skill = typeof item === "string" ? { name: item, iconKey: "Code2", iconSource: "library" as const } : item;
+
+                  return (
+                    <SkillBadge
+                      key={`${group.category}-${skill.name}-${index}`}
+                      skill={skill}
+                    />
+                  );
+                })}
               </div>
             </RevealItem>
           ))}

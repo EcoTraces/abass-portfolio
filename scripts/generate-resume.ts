@@ -205,7 +205,7 @@ function buildDocx() {
         children: [
           new Paragraph({
             children: [new TextRun({ text: profile.name, bold: true, size: 28 })],
-            alignment: AlignmentType.left,
+            alignment: AlignmentType.LEFT,
           }),
           new Paragraph({ children: [new TextRun({ text: resumeLocation, size: 22 })] }),
           new Paragraph({ children: [new TextRun({ text: `${profile.email} | ${profile.phone}`, size: 22 })] }),

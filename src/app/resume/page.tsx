@@ -6,6 +6,7 @@ import { profile } from "@/data/profile";
 import { skillGroups } from "@/data/skills";
 import { certifications } from "@/data/certifications";
 import { projects } from "@/data/projects";
+import { getSiteSettings } from "@/lib/content";
 import { siteUrl } from "@/lib/site";
 import type { Metadata } from "next";
 
@@ -29,7 +30,9 @@ const projectSummary = projects
   .filter((project) => ["ecotrace", "biometric-attendance-system", "library-management-system", "scholarsphere"].includes(project.slug))
   .map((project) => `${project.name}: ${project.shortDescription}`);
 
-const skillsText = skillGroups.map((group) => `${group.category}: ${group.items.join(", ")}`).join("; ");
+const skillsText = skillGroups
+  .map((group) => `${group.category}: ${(group.items || []).map((item) => (typeof item === "string" ? item : item.name)).join(", ")}`)
+  .join("; ");
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -37,7 +40,11 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteUrl}/resume` },
 };
 
-export default function ResumePage() {
+export default async function ResumePage() {
+  const siteSettings = await getSiteSettings();
+  const resumePdf = siteSettings.resumePath || profile.resumePath;
+  const resumeDocx = siteSettings.resumeDocxPath || profile.resumeDocxPath;
+
   return (
     <section className="py-16 sm:py-20">
       <Container className="max-w-4xl">
@@ -51,10 +58,10 @@ export default function ResumePage() {
             <Button href="/" variant="secondary">
               Back to site
             </Button>
-            <Button href={profile.resumePath} variant="primary" download="Abass-David-Komeh-Resume.pdf">
+            <Button href={resumePdf} variant="primary" download="Abass-David-Komeh-Resume.pdf">
               Download PDF
             </Button>
-            <Button href={profile.resumeDocxPath} variant="secondary" download="Abass-David-Komeh-Resume.docx">
+            <Button href={resumeDocx} variant="secondary" download="Abass-David-Komeh-Resume.docx">
               Download DOCX
             </Button>
           </div>

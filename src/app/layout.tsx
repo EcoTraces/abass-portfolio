@@ -2,6 +2,7 @@ import { BackToTop } from "@/components/layout/BackToTop";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { profile, socialLinks } from "@/data/profile";
+import { getSiteSettings } from "@/lib/content";
 import { isPlaceholder } from "@/lib/utils";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { siteUrl } from "@/lib/site";
@@ -19,79 +20,55 @@ import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/500.css";
 import "./globals.css";
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      name: profile.name,
-      url: siteUrl,
-      jobTitle: profile.headline,
-      description: profile.positioning,
-      sameAs: socialLinks
-        .filter((link) => link.icon !== "mail" && !isPlaceholder(link.href))
-        .map((link) => link.href),
-      ...(profile.profileImage && !isPlaceholder(profile.profileImage)
-        ? { image: new URL(profile.profileImage, siteUrl).toString() }
-        : {}),
-    },
-    {
-      "@type": "CreativeWork",
-      name: `${profile.name} Portfolio`,
-      description: profile.positioning,
-      url: siteUrl,
-      author: {
-        "@type": "Person",
-        name: profile.name,
-      },
-    },
-  ],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const siteSettings = await getSiteSettings();
+  const socialPreviewImage = siteSettings.socialPreviewImage || profile.socialPreviewImage || "/images/social-preview.jpg";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: `${profile.name} | MSc-seeking Computer Science Graduate`,
-    template: `%s | ${profile.name}`,
-  },
-  description:
-    "MSc-seeking Computer Science graduate from Njala University in Sierra Leone, focused on AI/ML, computer vision, cybersecurity, and sustainability-driven software engineering.",
-  alternates: { canonical: siteUrl },
-  keywords: [
-    "MSc-seeking Computer Science graduate",
-    "Software Engineer",
-    "Computer Science",
-    "Artificial Intelligence",
-    "Machine Learning",
-    "Computer Vision",
-    "Cybersecurity",
-    "Sustainability",
-    "Full-Stack Development",
-    "Mobile Development",
-    "Sierra Leone",
-    profile.name,
-  ],
-  authors: [{ name: profile.name }],
-  openGraph: {
-    type: "website",
-    title: `${profile.name} | MSc-seeking Computer Science Graduate`,
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: `${profile.name} | MSc-seeking Computer Science Graduate`,
+      template: `%s | ${profile.name}`,
+    },
     description:
       "MSc-seeking Computer Science graduate from Njala University in Sierra Leone, focused on AI/ML, computer vision, cybersecurity, and sustainability-driven software engineering.",
-    url: siteUrl,
-    siteName: profile.name,
-    images: ["/images/social-preview.jpg"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${profile.name} | MSc-seeking Computer Science Graduate`,
-    description:
-      "MSc-seeking Computer Science graduate from Njala University in Sierra Leone, focused on AI/ML, computer vision, cybersecurity, and sustainability-driven software engineering.",
-    images: ["/images/social-preview.jpg"],
-  },
-  icons: {
-    icon: "/favicon.ico",
-  },
-};
+    alternates: { canonical: siteUrl },
+    keywords: [
+      "MSc-seeking Computer Science graduate",
+      "Software Engineer",
+      "Computer Science",
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Computer Vision",
+      "Cybersecurity",
+      "Sustainability",
+      "Full-Stack Development",
+      "Mobile Development",
+      "Sierra Leone",
+      profile.name,
+    ],
+    authors: [{ name: profile.name }],
+    openGraph: {
+      type: "website",
+      title: `${profile.name} | MSc-seeking Computer Science Graduate`,
+      description:
+        "MSc-seeking Computer Science graduate from Njala University in Sierra Leone, focused on AI/ML, computer vision, cybersecurity, and sustainability-driven software engineering.",
+      url: siteUrl,
+      siteName: profile.name,
+      images: [socialPreviewImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${profile.name} | MSc-seeking Computer Science Graduate`,
+      description:
+        "MSc-seeking Computer Science graduate from Njala University in Sierra Leone, focused on AI/ML, computer vision, cybersecurity, and sustainability-driven software engineering.",
+      images: [socialPreviewImage],
+    },
+    icons: {
+      icon: "/favicon.ico",
+    },
+  };
+}
 
 const themeInitScript = `
 (function() {
@@ -105,7 +82,39 @@ const themeInitScript = `
 })();
 `;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const siteSettings = await getSiteSettings();
+  const heroProfileImage = siteSettings.profileImage || profile.profileImage;
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        name: profile.name,
+        url: siteUrl,
+        jobTitle: profile.headline,
+        description: profile.positioning,
+        sameAs: socialLinks
+          .filter((link) => link.icon !== "mail" && !isPlaceholder(link.href))
+          .map((link) => link.href),
+        ...(heroProfileImage && !isPlaceholder(heroProfileImage)
+          ? { image: new URL(heroProfileImage, siteUrl).toString() }
+          : {}),
+      },
+      {
+        "@type": "CreativeWork",
+        name: `${profile.name} Portfolio`,
+        description: profile.positioning,
+        url: siteUrl,
+        author: {
+          "@type": "Person",
+          name: profile.name,
+        },
+      },
+    ],
+  };
+
   return (
     <html
       lang="en"

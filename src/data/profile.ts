@@ -15,6 +15,8 @@ export const profile = {
   resumePath: "/resume/resume.pdf",
   resumeDocxPath: "/resume/resume.docx",
   profileImage: "/images/profile.jpg",
+  profileImageAlt: "Portrait of Abass David Komeh",
+  socialPreviewImage: "/images/social-preview.jpg",
   researchInterests: "AI/ML, computer vision, cybersecurity, sustainability",
   about: [
     "I'm a Computer Science graduate from Njala University in Sierra Leone, interested in using software and AI to solve practical local problems.",
